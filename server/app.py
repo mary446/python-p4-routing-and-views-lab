@@ -10,17 +10,17 @@ def index():
     title = "Python Operations with Flask Routing and Views"
     return f"<h1>{title}</h1>"
 
-@app.route('/print/<string:parameter>')
-def print_string(parameter):
-    print(parameter)  
-    return f"<p>String printed: {parameter}</p>"
+@app.route('/print/<string:str_parameter>')
+def print_string(str_parameter):
+    print('hello')  
+    return f"hello"
 
 @app.route('/count/<int:parameter>')
 def count(parameter):
     result = '\n'.join(str(i) for i in range(1, parameter+ 1))
     return result
 
-@app.route('/math/<float:num1>/<operation>/<float:num2>')
+@app.route('/math/<int:num1>/<operation>/<int:num2>')
 def math(num1, operation, num2):
     result = None
 
@@ -30,13 +30,13 @@ def math(num1, operation, num2):
         result = num1 - num2
     elif operation == '*':
         result = num1 * num2
-    elif operation == '/':
+    elif operation == 'div':
         result = num1 / num2
     elif operation == '%':
         result = num1 % num2
 
     else:
-        return "<h1>Invalid operation! Please provide a valid operation.</h1>"
+        return "Invalid operation"
 
     return str(result)
 
